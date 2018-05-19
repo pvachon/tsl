@@ -256,7 +256,7 @@ def build(bld):
 		target   = os.path.join(testPath, 'test_app'),
 		name     = 'test_app',
 	)
-	bld.install_files('${PREFIX}/include/app', bld.path.ant_glob('app/**/*.h'))
+	bld.install_files('${PREFIX}/include/tsl/app', bld.path.ant_glob('app/**/*.h'))
 
 	#config
 	bld.stlib(
@@ -272,7 +272,7 @@ def build(bld):
 		target   = os.path.join(testPath, 'test_config'),
 		name     = 'test_config',
 	)
-	bld.install_files('${PREFIX}/include/config', bld.path.ant_glob('config/**/*.h'))
+	bld.install_files('${PREFIX}/include/tsl/config', bld.path.ant_glob('config/**/*.h'))
 
 	#test
 	bld.stlib(
@@ -282,7 +282,7 @@ def build(bld):
 		install_path = os.path.join(bld.env.PREFIX, 'lib'),
 		name     = 'tsltest',
 	)
-	bld.install_files('${PREFIX}/include/test', bld.path.ant_glob('test/**/*.h'))
+	bld.install_files('${PREFIX}/include/tsl/test', bld.path.ant_glob('test/**/*.h'))
 
 	#TSL
 	#Version objects are built specially first since they have a special define
@@ -329,11 +329,11 @@ def build(bld):
 		target   = os.path.join(binPath, 'dump_version'),
 		name     = 'dump_version',
 	)
-	bld.install_files('${PREFIX}/include/tsl', bld.path.ant_glob('tsl/**/*.h'))
+	bld.install_files('${PREFIX}/include/tsl/tsl', bld.path.ant_glob('tsl/**/*.h'))
 
 	# Build the pkg-config file
 	bld(source='tsl.pc.in', VERSION=bld.env.VERSION,
-		INCLUDEDIR=os.path.join(bld.env.PREFIX,'include'),
+		INCLUDEDIR=os.path.join(bld.env.PREFIX,'include', 'tsl'),
 		LIBDIR=os.path.join(bld.env.PREFIX, 'lib'))
 
 from waflib.Build import BuildContext
