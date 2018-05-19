@@ -1,0 +1,8 @@
+*.sw*
+*.o
+build
+tags
+.waf*
+.lock*
+*.pyc
+*.pyo
