@@ -87,6 +87,9 @@
 #define SEV_ERROR       "E"
 #define SEV_FATAL       "F"
 
+void __diag_get_time(unsigned int *year, unsigned int *month, unsigned int *day,
+                     unsigned int *hour, unsigned int *minutes, unsigned int *seconds);
+
 /**
  * A message that is always displayed when the application is running -- typically
  * a particular subsystem will have its own notification macros that will be used
@@ -98,9 +101,9 @@
  * \note Line number and function name are also output as a part of this function
  */
 #define MESSAGE(subsys, severity, ident, message, ...) \
-    do {                            \
-        uint32_t hi = 0, lo = 0;                                                                                                                \
-        time_get_time_frac(&hi, &lo);                                                                                                           \
-        fprintf(stderr, "[%9u.%09u] [tid=%5d] %%" subsys "-" severity "-" ident ", " message " (%s:%d in %s)\n", hi, lo, (int)syscall(SYS_gettid), ##__VA_ARGS__, __FILE__, __LINE__, __FUNCTION__); \
+    do { \
+        unsigned int _Y, _M, _D, _h, _m, _s; \
+        __diag_get_time(&_Y, &_M, &_D, &_h, &_m, &_s); \
+        fprintf(stderr, "%04u-%02u-%02u %02u:%02u:%02u [tid=%5d] %%" subsys "-" severity "-" ident ", " message " (%s:%d in %s)\n", _Y, _M, _D, _h, _m, _s, (int)syscall(SYS_gettid), ##__VA_ARGS__, __FILE__, __LINE__, __FUNCTION__); \
     } while (0)
 
