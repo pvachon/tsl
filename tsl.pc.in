@@ -3,6 +3,6 @@ includedir=@INCLUDEDIR@
 Name: tsl
 Description: The Standard Library
 Version: @VERSION@
-Libs: -L${libdir} -ltsl -ltsltest -ltslapp -ltslconfig -ljansson
+Libs: -L${libdir} -ltsltest -ltslapp -ltslconfig -ltsl -ljansson
 Cflags: -I${includedir}
 
