@@ -25,17 +25,12 @@ To perform the minimal build:
 
 1. Install Build Dependencies from `apt`:
    ```
-   sudo apt-get install build-essential git libjansson-dev
+   sudo apt-get install build-essential git libjansson-dev \
+       libck-dev \
+       python
    ```
 
-2. Build ConcurrencyKit:
-   ```
-   git clone https://github.com/concurrencykit/ck.git
-   cd ck
-   ./configure && make && sudo make install
-   ```
-
-3. Check out tsl, build it, and install it:
+2. Check out tsl, build it, and install it:
    ```
    git clone https://github.com/pvachon/tsl.git
    cd tsl-sdr
