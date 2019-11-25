@@ -218,3 +218,13 @@ install(TARGETS tslconfig
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/config
 )
+
+# CPack package generator for Debian based systems
+set(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGING_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
+set(CPACK_PACKAGE_NAME "libtsl-dev")
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+set(CPACK_PACKAGE_CONTACT "Phil Vachon <phil@security-embedded.com>")
+set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "TSL-SDR, The Standard Library of Software Defined Radio Tools (MultiFM and Decoder...)")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libjansson4")
+include(CPack)
