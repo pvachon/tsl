@@ -22,12 +22,14 @@
 #include <app/cpufeatures.h>
 #include <app/app.h>
 
-#include <tsl/diag.h>
 #include <tsl/errors.h>
+#if defined(__x86_64__)
+#include <tsl/diag.h>
 #include <tsl/assert.h>
 #include <tsl/cal.h>
 
 #include <stdbool.h>
+
 
 #define CPUID_LEAF_FEATURE_FLAGS            0x1
 
@@ -102,10 +104,13 @@ aresult_t __cpuid_check_feature(unsigned feature_id, bool *available)
     return ret;
 }
 
+#endif /* defined(__x86_64__) */
+
 aresult_t app_cpufeatures_check_at_init(void)
 {
     aresult_t ret = A_OK;
 
+#if defined(__x86_64__)
     bool result = true,
          feature = false;
 
@@ -146,6 +151,7 @@ aresult_t app_cpufeatures_check_at_init(void)
     if (false == result) {
         PANIC("Failed CPU feature checks, aborting. If this is on a 12Sided appliance, please contact 12Sided support at support@12sidedtech.com.");
     }
+#endif /* defined(__x86_64__) */
 
     return ret;
 }
