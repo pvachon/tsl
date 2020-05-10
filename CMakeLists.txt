@@ -86,3 +86,13 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/tsl.pc.in
 # Install the pkg-config file
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/tsl.pc
     DESTINATION ${INSTALL_PKGCONFIG_DIR})
+
+# Generate dpkg automatically
+set(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGING_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
+set(CPACK_PACKAGE_NAME "libtsl-dev")
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+set(CPACK_PACKAGE_CONTACT "Phil Vachon <phil@security-embedded.com>")
+set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "TSL - The Standard Library")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libjansson-dev libck-dev")
+include(CPack)
