@@ -1,8 +1,8 @@
-libdir=@LIBDIR@
-includedir=@INCLUDEDIR@
+libdir=@INSTALL_LIB_DIR@
+includedir=@INSTALL_INC_DIR@/tsl
 Name: tsl
 Description: The Standard Library
-Version: @VERSION@
+Version: @PROJECT_VERSION@
 Libs: -L${libdir} -ltsltest -ltslapp -ltslconfig -ltsl -ljansson
 Cflags: -I${includedir}
 

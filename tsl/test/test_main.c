@@ -18,9 +18,6 @@ TEST_DECL(test_basic) {
 int main(int argc, char *argv[])
 {
     TEST_START(tsl);
-#ifdef __x86_64__
-    TEST_CASE(test_coro);
-#endif
     TEST_CASE(test_basic);
     TEST_CASE(test_format_sockaddr_t_null);
     TEST_CASE(test_format_sockaddr_t_ipv4);
@@ -30,9 +27,6 @@ int main(int argc, char *argv[])
     TEST_CASE(test_rbtree_lifecycle);
     TEST_CASE(test_rbtree_corner_cases);
     TEST_CASE(test_cpu_mask);
-#ifdef __x86_64__
-    TEST_CASE(test_speed);
-#endif
     TEST_FINISH(tsl);
     return EXIT_SUCCESS;
 }
