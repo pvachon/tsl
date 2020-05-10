@@ -2,9 +2,9 @@ add_executable(test_config test_engine.c)
 
 target_link_libraries(test_config PRIVATE
     jansson
-    testframework
-    app
-    config
+    tsltestframework
+    tslapp
+    tslconfig
     tsl
     ck)
 

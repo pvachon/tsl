@@ -3,6 +3,6 @@ includedir=@INSTALL_INC_DIR@/tsl
 Name: tsl
 Description: The Standard Library
 Version: @PROJECT_VERSION@
-Libs: -L${libdir} -ltsltest -ltslapp -ltslconfig -ltsl -ljansson
+Libs: -L${libdir} -ltsltestframework -ltslapp -ltslconfig -ltsl -ljansson
 Cflags: -I${includedir}
 

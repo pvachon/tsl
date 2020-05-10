@@ -1,4 +1,4 @@
-add_library(testframework STATIC
+add_library(tsltestframework STATIC
     assert.c
     filesystem.c
     framework.c
@@ -12,14 +12,14 @@ set(TSL_TESTFRAMEWORK_HEADERS
     framework_priv.h
     malloc_helpers.h)
 
-target_include_directories(testframework INTERFACE "${PROJECT_SOURCE_DIR}")
-target_include_directories(testframework PUBLIC
+target_include_directories(tsltestframework INTERFACE "${PROJECT_SOURCE_DIR}")
+target_include_directories(tsltestframework PUBLIC
                            "${PROJECT_BUILD_DIR}"
                            "${JANSSON_INCLUDE_DIRS}"
                            "${PROJECT_SOURCE_DIR}"
                            "${CK_INCLUDE_DIRS}")
 
-install(TARGETS testframework
+install(TARGETS tsltestframework
     ARCHIVE DESTINATION lib)
 install(FILES ${TSL_TESTFRAMEWORK_HEADERS}
     DESTINATION ${TSL_HEADERS_INSTALL_BASE}/test)
