@@ -4,21 +4,32 @@ This is the repository for the The Standard Library, or TSL.
 
 # Building
 
-You will need Python installed. Invoke `./waf configure` to configure the build,
-and `./waf build` to build the tools.
+You will need at least CMake version 3.7 installed. Most distributions have some version
+of CMake available. Once you have CMake available, create a `build` directory and invoke
+CMake in there:
 
-The applications will end up in `build/release/bin`. Just invoke them in the usual way.
+```
+mkdir tsl/build
+cd tsl/build
+cmake ..
+```
+This creates the necessary Makefiles. Next, invoke make to build the project:
+```
+make
+```
 
 ## Installation
 
-Install the TSL somewhere convenient using the `./waf install` command.
+Install the TSL somewhere convenient using the `make install` command, after successfully
+building the distribution.
 
 ## Dependencies
 
 The TSL currently depends on:
  * Linux
- * ConcurrencyKit (https://github.com/concurrencykit/ck)
- * libjansson (most distributions have a package)
+ * ConcurrencyKit (most distributions have a package, look for libck)
+ * Jansson (most distributions have a package, look for libjansson)
+ * CMake (most distributions have a package, look for cmake)
 
 ### On Debian/Raspbian/Ubuntu
 To perform the minimal build:
@@ -26,23 +37,23 @@ To perform the minimal build:
 1. Install Build Dependencies from `apt`:
    ```
    sudo apt-get install build-essential git libjansson-dev \
-       libck-dev \
+       libck-dev cmake\
        python
    ```
 
-2. Check out tsl, build it, and install it:
+2. Check out tsl, build it, and install it. In short:
    ```
    git clone https://github.com/pvachon/tsl.git
-   cd tsl-sdr
-   ./waf configure && ./waf build install
+   mkdir tsl/build
+   cd tsl/build
+   cmake ..
+   make
+   make install
    ```
 
 # Getting Help
 
-Be sure to check the [project wiki](https://github.com/pvachon/tsl-sdr/wiki) for
-use cases, documentation and other details.
-
-If you think you've found a bug (hey, it happens), open a [Github issue](https://github.com/pvachon/tsl-sdr/issues) for the project.
+If you think you've found a bug (hey, it happens), open a [Github issue](https://github.com/pvachon/tsl/issues) for the project.
 
 # License
 
