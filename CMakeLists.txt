@@ -98,6 +98,6 @@ set(CPACK_PACKAGE_NAME "libtsl-dev")
 set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
 set(CPACK_PACKAGE_CONTACT "Phil Vachon <phil@security-embedded.com>")
 set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "TSL - The Standard Library")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libjansson-dev libck-dev")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libjansson-dev, libck-dev")
 include(CPack)
 
