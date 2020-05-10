@@ -25,6 +25,10 @@ add_definitions(-D_ATS_IN_TREE -D_GNU_SOURCE)
 add_definitions(-DSYS_CACHE_LINE_LENGTH=64)
 add_definitions(-DCONFIG_DIRECTORY_DEFAULT="/etc/tsl")
 
+# Make sure we set the right build flags
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")
+
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -rdynamic")
 
 set(TSL_BASE_DIR "${PROJECT_SOURCE_DIR}")
@@ -96,3 +100,4 @@ set(CPACK_PACKAGE_CONTACT "Phil Vachon <phil@security-embedded.com>")
 set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "TSL - The Standard Library")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libjansson-dev libck-dev")
 include(CPack)
+

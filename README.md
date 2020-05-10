@@ -51,6 +51,17 @@ To perform the minimal build:
    make install
    ```
 
+# Packaging
+You can create a package using `cpack`. You'll likely want to package a release build, so
+do something like the following:
+```
+mkdir tsl/release
+cd tsl/release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cpack
+```
+This will leave a `dpkg` file in the release directory, ready for installation.
+
 # Getting Help
 
 If you think you've found a bug (hey, it happens), open a [Github issue](https://github.com/pvachon/tsl/issues) for the project.
