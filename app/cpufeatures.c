@@ -122,11 +122,13 @@ aresult_t app_cpufeatures_check_at_init(void)
         CPU_MSG(SEV_FATAL, "MISSING-CPUID-FEATURE", "This application requires CMPXCHG16B be present and enabled.");
     }
 
+#ifdef _TSL_NEED_SSE_42
     TSL_BUG_IF_FAILED(__cpuid_check_feature(CPUID_FEATURE_SSE_42, &feature));
     result &= feature;
     if (false == feature) {
         CPU_MSG(SEV_FATAL, "MISSING-CPUID-FEATURE", "This application requires SSE 4.2 be present and enabled.");
     }
+#endif
 
 #ifdef _TSL_NEED_AVX
     TSL_BUG_IF_FAILED(__cpuid_check_feature(CPUID_FEATURE_AVX, &feature));
@@ -149,7 +151,7 @@ aresult_t app_cpufeatures_check_at_init(void)
     }
 
     if (false == result) {
-        PANIC("Failed CPU feature checks, aborting. If this is on a 12Sided appliance, please contact 12Sided support at support@12sidedtech.com.");
+        PANIC("Failed CPU feature checks, aborting. Please file an issue with the contents of /proc/cpuinfo on github.com/pvachon/tsl");
     }
 #endif /* defined(__x86_64__) */
 
