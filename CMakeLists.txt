@@ -53,10 +53,10 @@ execute_process(COMMAND uname -m
 
 if("${CPU_ARCH}" STREQUAL "armv7l")
     add_definitions(-D_USE_ARM_NEON)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=cortex-a7 -mfpu=crypto-neon-fp-armv8 -mfloat-abi=hard")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=armv7-a -mfpu=crypto-neon-fp-armv8 -mfloat-abi=hard")
 elseif("${CPU_ARCH}" STREQUAL "aarch64")
     add_definitions(-D_USE_ARM_NEON)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=cortex-a53")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=armv8-a")
 else()
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native -mtune=native")
 endif()
